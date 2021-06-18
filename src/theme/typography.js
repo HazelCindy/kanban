@@ -1,4 +1,5 @@
 const typography = {
+  fontFamily: ["Montserrat", "sans-serif"].join(","),
   h1: {
     fontWeight: 500,
     fontSize: 35,
