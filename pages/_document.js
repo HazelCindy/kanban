@@ -10,7 +10,6 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/favicons/72x72.png" />
           <link rel="apple-touch-icon" href="/favicons/114x114.png" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="preconnect" href="https://fonts.gstatic.com" />

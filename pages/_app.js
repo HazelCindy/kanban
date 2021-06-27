@@ -6,7 +6,10 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import parser from "ua-parser-js";
 import mediaQuery from "css-mediaquery";
+import { ApolloProvider } from "@apollo/client";
 import theme from "../src/theme";
+import Client from "../src/Apollo/Client";
+import "../styles/globals.css";
 
 export default function MyApp(props) {
   const { Component, pageProps, headers } = props;
@@ -28,9 +31,10 @@ export default function MyApp(props) {
   }, []);
 
   return (
-    <>
+    <ApolloProvider client={Client}>
       <Head>
-        <title>My SSR Page with Material UI</title>
+        <title>My SSR Page with Material U</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <ThemeProvider
         theme={{
@@ -45,7 +49,7 @@ export default function MyApp(props) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </ApolloProvider>
   );
 }
 
