@@ -7,9 +7,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import parser from "ua-parser-js";
 import mediaQuery from "css-mediaquery";
 import { ApolloProvider } from "@apollo/client";
-import theme from "../src/theme";
-import Client from "../src/Apollo/Client";
-import "../styles/globals.css";
+import theme from "../theme";
+import Client from "../apollo/Client";
+import "../../styles/globals.css";
 
 export default function MyApp(props) {
   const { Component, pageProps, headers } = props;

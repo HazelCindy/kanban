@@ -13,14 +13,14 @@ import {
   Button,
   NoSsr,
 } from "@material-ui/core";
-import styles from "../styles/Home.module.css";
-import MainLayout from "../src/layouts/MainLayout";
-import Dialog from "../src/components/Dialog";
-import Alert from "../src/components/Alert";
-import GetCountriesQuery from "../src/api/Queries/GetCountries";
-import ListShimmers from "../src/Shimmers/ListShimmers";
-import CountriesListItem from "../src/HomeComponents/CountriesListItem";
-import CountrySearchTextField from "../src/forms/Home/CountrySearchTextField";
+import styles from "../../styles/Home.module.css";
+import MainLayout from "../layouts/MainLayout";
+import Dialog from "../components/Dialog";
+import Alert from "../components/Alert";
+import GetCountriesQuery from "../api/Queries/GetCountries";
+import ListShimmers from "../shimmers/ListShimmers";
+import CountriesListItem from "../homeComponents/CountriesListItem";
+import CountrySearchTextField from "../forms/Home/CountrySearchTextField";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
