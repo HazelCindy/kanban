@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import {
   Grid,
   Box,
@@ -12,7 +12,7 @@ import {
   List,
   Button,
   NoSsr,
-} from "@material-ui/core";
+} from "@mui/material";
 import styles from "../../styles/Home.module.css";
 import MainLayout from "../layouts/MainLayout";
 import Dialog from "../components/Dialog";
@@ -158,7 +158,7 @@ export default function Home() {
                       loader={<ListShimmers />}
                     >
                       {({ getCountries }) => (
-                        <>
+                        <div>
                           {getCountries.length > 0 ? (
                             <List>
                               {getCountries.map((item) => (
@@ -174,7 +174,7 @@ export default function Home() {
                               Sorry we do not have any countries
                             </Alert>
                           )}
-                        </>
+                        </div>
                       )}
                     </GetCountriesQuery>
                   </Box>

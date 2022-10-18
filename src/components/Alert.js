@@ -1,8 +1,8 @@
 import React from "react";
-import MuiAlert from "@material-ui/lab/Alert";
+import MuiAlert from "@mui/material/Alert";
 
-const Alert = (props) => {
+function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
-};
+}
 
 export default React.memo(Alert);

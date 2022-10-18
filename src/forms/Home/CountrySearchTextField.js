@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TextField } from "@material-ui/core";
+import { TextField } from "@mui/material";
 
-const CountrySearchTextField = ({ handleChange }) => {
+function CountrySearchTextField({ handleChange }) {
   return (
     <TextField
       fullWidth
@@ -15,7 +15,7 @@ const CountrySearchTextField = ({ handleChange }) => {
       variant="outlined"
     />
   );
-};
+}
 
 CountrySearchTextField.propTypes = {
   handleChange: PropTypes.func.isRequired,

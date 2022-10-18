@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
+import Container from "@mui/material/Container";
 import Topbar from "./Topbar";
 
-const MainLayout = ({ children }) => {
+function MainLayout({ children }) {
   return (
     <div>
       <Topbar />
@@ -11,6 +11,6 @@ const MainLayout = ({ children }) => {
       </main>
     </div>
   );
-};
+}
 
 export default MainLayout;

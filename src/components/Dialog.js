@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import AppBar from "@material-ui/core/AppBar";
-import Box from "@material-ui/core/Box";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme, makeStyles } from "@material-ui/core/styles";
-import Slide from "@material-ui/core/Slide";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
+import Slide from "@mui/material/Slide";
 import { Form as FormikForm } from "formik";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 const useSyles = makeStyles((theme) => ({
   dialog: {
@@ -44,12 +45,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const ModalChildren = ({
-  classes,
-  modalHeader,
-  modalContent,
-  modalActions,
-}) => {
+function ModalChildren({ classes, modalHeader, modalContent, modalActions }) {
   return (
     <>
       {modalHeader && (
@@ -68,9 +64,9 @@ const ModalChildren = ({
       )}
     </>
   );
-};
+}
 
-const Modal = ({
+function Modal({
   open,
   responsive = false,
   fullScreen = false,
@@ -82,10 +78,10 @@ const Modal = ({
   form = false,
   handleClose,
   disableBackdropClose = false,
-}) => {
+}) {
   const theme = useTheme();
   const classes = useSyles();
-  const fullScreenValue = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreenValue = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Dialog
       TransitionComponent={Transition}
@@ -122,7 +118,7 @@ const Modal = ({
       </Box>
     </Dialog>
   );
-};
+}
 
 Modal.propTypes = {
   open: PropTypes.bool.isRequired,
