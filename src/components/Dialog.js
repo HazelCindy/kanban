@@ -6,59 +6,49 @@ import DialogContent from "@mui/material/DialogContent";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { useTheme, styled } from "@mui/material/styles";
 import Slide from "@mui/material/Slide";
 import { Form as FormikForm } from "formik";
 import { Typography } from "@mui/material";
 
-const useSyles = makeStyles((theme) => ({
-  dialog: {
-    paddingBottom: 16,
-  },
-  dialogTitle: {
-    borderBottom: `1px solid ${theme.palette.primary.main}`,
-    color: theme.palette.primary.main,
-  },
-  appBar: {
-    position: "relative",
-    backgroundColor: "#ffffff",
-    padding: "16px 24px",
-    boxShadow: "0 0 1px 0 rgba(0,0,0,0.16)",
-  },
-  dialogHeading: {
-    fontSize: 16,
-    color: theme.palette.primary.main,
-  },
-  dialogActions: {
-    display: "flex",
-    justifyContent: "space-evenly",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
-  },
-}));
+const StyledAppBar = styled(AppBar)(
+  ({ theme }) => `
+  position: relative;
+  background-color: ${theme.palette.white.main};
+  padding: 16px 24px;
+  boxShadow: 0 0 1px 0 rgba(0,0,0,0.16);
+`
+);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function ModalChildren({ classes, modalHeader, modalContent, modalActions }) {
+function ModalChildren({ modalHeader, modalContent, modalActions }) {
   return (
     <>
       {modalHeader && (
-        <AppBar className={classes.appBar}>
-          <Typography variant="h4" className={classes.dialogHeading}>
+        <StyledAppBar>
+          <Typography
+            variant="h4"
+            sx={(theme) => ({
+              fontSize: 16,
+              color: theme.palette.primary.main,
+            })}
+          >
             {modalHeader}
           </Typography>
-        </AppBar>
+        </StyledAppBar>
       )}
 
       <DialogContent>{modalContent}</DialogContent>
       {modalActions && (
-        <DialogActions className={classes.dialogActions}>
+        <DialogActions
+          sx={{
+            display: "flex",
+            justifyContent: "space-evenly",
+          }}
+        >
           {modalActions}
         </DialogActions>
       )}
@@ -80,7 +70,6 @@ function Modal({
   disableBackdropClose = false,
 }) {
   const theme = useTheme();
-  const classes = useSyles();
   const fullScreenValue = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Dialog
@@ -97,11 +86,20 @@ function Modal({
       }}
       aria-labelledby="responsive-dialog-title"
     >
-      <Box className={classes.dialog}>
+      <Box
+        sx={{
+          paddingBottom: 1,
+        }}
+      >
         {form ? (
-          <FormikForm className={classes.form}>
+          <FormikForm
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
+          >
             <ModalChildren
-              classes={classes}
               modalHeader={modalHeader}
               modalContent={modalContent}
               modalActions={modalActions}
@@ -109,7 +107,6 @@ function Modal({
           </FormikForm>
         ) : (
           <ModalChildren
-            classes={classes}
             modalHeader={modalHeader}
             modalContent={modalContent}
             modalActions={modalActions}

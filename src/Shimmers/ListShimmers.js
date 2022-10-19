@@ -1,5 +1,7 @@
 import React from "react";
-import { List, ListItem, Skeleton } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Skeleton from "@mui/material/Skeleton";
 
 function ListShimmers({ items = 4 }) {
   const listItems = [];
