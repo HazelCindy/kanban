@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import CloseIcon from "@material-ui/icons/Close";
-import IconButton from "@material-ui/core/IconButton";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import SnackbarContent from "@mui/material/SnackbarContent";
+import makeStyles from "@mui/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   success: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MySnackbarContentWrapper = (props) => {
+function MySnackbarContentWrapper(props) {
   const classes = useStyles();
   const { className, message, onClose, variant, variantText, ...other } = props;
   return (
@@ -92,6 +92,7 @@ const MySnackbarContentWrapper = (props) => {
           aria-label="close"
           color="inherit"
           onClick={onClose}
+          size="large"
         >
           <CloseIcon className={classes.icon} />
         </IconButton>,
@@ -99,7 +100,7 @@ const MySnackbarContentWrapper = (props) => {
       {...other}
     />
   );
-};
+}
 
 MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,

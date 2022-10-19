@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, NetworkStatus } from "@apollo/client";
-import Box from "@material-ui/core/Box";
+import Box from "@mui/material/Box";
 import Loader from "./Loader";
 import MySnackbarContentWrapper from "./MySnackbarContentWrapper";
 import ErrorHandler from "../utils/errorHandler";
@@ -30,7 +30,7 @@ const printErrorMessage = (error) => {
   return ErrorHandler(message);
 };
 
-const Query = ({
+function Query({
   children,
   getTranslations,
   fetchMore,
@@ -38,7 +38,7 @@ const Query = ({
   query,
   hideError = false,
   ...restProps
-}) => {
+}) {
   const {
     loading,
     error,
@@ -81,6 +81,6 @@ const Query = ({
   };
 
   return children(props);
-};
+}
 
 export default Query;

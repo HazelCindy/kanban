@@ -1,8 +1,9 @@
 import React from "react";
-import { List, ListItem } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Skeleton from "@mui/material/Skeleton";
 
-const ListShimmers = ({ items = 4 }) => {
+function ListShimmers({ items = 4 }) {
   const listItems = [];
   for (let x = 0; x < items; x += 1) {
     listItems.push(
@@ -12,6 +13,6 @@ const ListShimmers = ({ items = 4 }) => {
     );
   }
   return <List>{listItems}</List>;
-};
+}
 
 export default React.memo(ListShimmers);

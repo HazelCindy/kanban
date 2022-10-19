@@ -6,13 +6,12 @@ export const GET_COUNTRIES = gql`
   query GetCountries($param: String) {
     getCountries(param: $param) {
       country
-      region
     }
   }
 `;
 
-const GetCountriesQuery = ({ ...rest }) => {
+function GetCountriesQuery({ ...rest }) {
   return <Query query={GET_COUNTRIES} {...rest} />;
-};
+}
 
 export default GetCountriesQuery;
