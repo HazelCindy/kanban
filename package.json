@@ -18,7 +18,7 @@
     "@mui/lab": "^5.0.0-alpha.104",
     "@mui/material": "^5.10.10",
     "@mui/styles": "^5.10.10",
-    "clsx": "^1.1.1",
+    "clsx": "1.2.1",
     "formik": "^2.2.9",
     "graphql": "16.6.0",
     "next": "12.3.1",
@@ -28,8 +28,8 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
-    "babel-jest": "^27.0.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "0.6.7",
+    "babel-jest": "29.2.1",
     "enzyme": "^3.11.0",
     "eslint": "8.25.0",
     "eslint-config-airbnb": "19.0.4",
