@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
-
-First, run the development server:
+First, install the dependencies using yar
+```bash
+yarn
+```
+* >Secondly, setup any environment variables required in your **.env** that you create locally
+  
+Thirdly, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fourth, to build your project, run
+```bash
+yarn build
+```
+***
+* Remember to never push directly to **dev** or **preprod** or **master** branches.
+***
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+#### Remember to always:
+* Build your project before opening a PR/MR
+* After building, always run a lighthouse check on your pages to make sure you have a green score(above 90%)
+* Always run linting checks
+* When you pass props to a component, ensure you document them using **prop-types**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+***
+### Repository Structure
+Please ensure you adhere to the following folder structure:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+* Remember to run lint checks and ensure that all files are kept in their respective folders for easy project management. Example:
+* >You have created a file called SignUp.js, to correctly place it, it should be put inside **containers > SignUp > SignUp.js**
 
-## Learn More
+* >containers:
+   here we place file structures for different pages
+* >components: here we place any file that can be re-used across multiple areas
 
-To learn more about Next.js, take a look at the following resources:
+* >layouts:
+  > here we place different layout files for different pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* >apollo:
+  > this folder contains the configurations for apollo-client and how it communicates with the server side
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+* >pages:
+  > place any file you wish to be converted to a route. Remember naming is in small letters
+  
+* >theme:
+  > here we can the theme used across all the mui components configured.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* >utils:
+  > here we place any helper functions
+   
+* >styles:
+  > place global and file specific styles here which can easily be accessed by nextjs
