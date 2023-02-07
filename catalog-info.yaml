@@ -1,0 +1,95 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: saf-next-boilerplate
+  title: Web Portal Starter
+  description: Create a simple web portal starter using React and NextJS
+  tags:
+    - recommended
+    - javascript
+    - NextJS
+    - React
+spec:
+  owner: WebSquad@Safaricom.co.ke
+  type: service
+
+  parameters:
+    - title: Provide some simple information
+      required:
+        - component_id
+        - owner
+        - portal_name
+      properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component e.g. ms-domain-function
+          ui:field: EntityNamePicker
+        portal_name:
+          title: Portal Name
+          type: string 
+          description: Name for the portal. eg (sim-portal*)
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this service is for.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - gitlab.safaricom.co.ke
+              - 10.184.7.135:8090
+
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutTemplating:
+          - .gitlab/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          portal_name: ${{ parameters.java_package_name }}
+          owner: ${{ parameters.owner }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          http_port: 8080
+
+    - id: publish
+      name: Publish
+      action: publish:gitlab
+      input:
+        allowedHosts: ["gitlab.safaricom.co.ke","10.184.7.135:8090"]
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: develop
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
