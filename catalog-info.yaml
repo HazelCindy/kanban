@@ -16,15 +16,9 @@ spec:
   parameters:
     - title: Provide some simple information
       required:
-        - component_id
         - owner
         - portal_name
       properties:
-        component_id:
-          title: Name
-          type: string
-          description: Unique name of the component e.g. ms-domain-function
-          ui:field: EntityNamePicker
         portal_name:
           title: Portal Name
           type: string 
@@ -56,28 +50,25 @@ spec:
 
   steps:
     - id: template
-      name: Fetch Skeleton + Template
+      name: Fetch Template
       action: fetch:template
       input:
-        url: ./skeleton
+        url: ./template
         copyWithoutTemplating:
           - .gitlab/workflows/*
         values:
-          component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           portal_name: ${{ parameters.portal_name }}
           owner: ${{ parameters.owner }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          http_port: 8080
 
     - id: publish
       name: Publish
       action: publish:gitlab
       input:
         allowedHosts: ["gitlab.safaricom.co.ke","10.184.7.135:8090"]
-        description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: develop
+        defaultBranch: dev
 
     - id: register
       name: Register
