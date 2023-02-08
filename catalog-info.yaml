@@ -7,8 +7,8 @@ metadata:
   tags:
     - recommended
     - javascript
-    - NextJS
-    - React
+    - nextjs
+    - react
 spec:
   owner: WebSquad@Safaricom.co.ke
   type: service
@@ -65,7 +65,7 @@ spec:
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
-          portal_name: ${{ parameters.java_package_name }}
+          portal_name: ${{ parameters.portal_name }}
           owner: ${{ parameters.owner }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           http_port: 8080
