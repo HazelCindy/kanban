@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery, NetworkStatus } from "@apollo/client";
 import Box from "@mui/material/Box";
-import Loader from "./Loader";
+import Loader from "./loader";
 import MySnackbarContentWrapper from "./MySnackbarContentWrapper";
 import ErrorHandler from "../utils/errorHandler";
 

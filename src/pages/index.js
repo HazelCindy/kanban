@@ -13,9 +13,9 @@ import styles from "../../styles/Home.module.css";
 import MainLayout from "../layouts/MainLayout";
 import Dialog from "../components/Dialog";
 import Alert from "../components/Alert";
-import GetCountriesQuery from "../api/Queries/GetCountries";
-import ListShimmers from "../shimmers/ListShimmers";
-import CountriesListItem from "../homeComponents/CountriesListItem";
+import GetCountriesQuery from "../api/graphQueries/GetCountries";
+import ListShimmers from "../components/shimmers/ListShimmers";
+import CountriesListItem from "../containers/homeComponents/CountriesListItem";
 import CountrySearchTextField from "../forms/Home/CountrySearchTextField";
 
 export default function Home() {

@@ -1,5 +1,5 @@
 ## Getting Started
-First, install the dependencies using yar
+First, install the dependencies using yarn
 ```bash
 yarn
 ```
@@ -39,7 +39,7 @@ Please ensure you adhere to the following folder structure:
 * >layouts:
   > here we place different layout files for different pages
 
-* >apollo:
+* >apolloConfigs:
   > this folder contains the configurations for apollo-client and how it communicates with the server side
 
 * >pages:

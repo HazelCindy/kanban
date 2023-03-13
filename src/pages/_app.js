@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ApolloProvider } from "@apollo/client";
 import { CacheProvider } from "@emotion/react";
 import theme from "../theme";
-import Client from "../apollo/Client";
+import Client from "../apolloConfigs/Client";
 import "../../styles/globals.css";
 import createEmotionCache from "../utils/createEmotionCache";
 
