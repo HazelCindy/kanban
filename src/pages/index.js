@@ -9,6 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "../../styles/Home.module.css";
 import MainLayout from "../layouts/MainLayout";
 import Dialog from "../components/Dialog";
@@ -17,6 +18,8 @@ import GetCountriesQuery from "../api/graphQueries/GetCountries";
 import ListShimmers from "../components/shimmers/ListShimmers";
 import CountriesListItem from "../containers/homeComponents/CountriesListItem";
 import CountrySearchTextField from "../forms/Home/CountrySearchTextField";
+import HomeDesktop from "../components/pages/desktop/HomeDesktop";
+import HomeMobile from "../components/pages/mobile/HomeMobile";
 
 export default function Home() {
   const [searchParam, setSearchParam] = React.useState("");
@@ -24,6 +27,7 @@ export default function Home() {
     open: false,
     country: "",
   });
+  const mobileMatches = useMediaQuery("(max-width:1024px)");
   const handleChange = (event) => {
     setSearchParam(event.target.value);
   };
@@ -60,6 +64,9 @@ export default function Home() {
           <link rel="icon" href="/favicons/72x72.png" />
         </Head>
         <Grid container spacing={2} className={styles.main}>
+          <Grid item xs={12}>
+            {!mobileMatches ? <HomeDesktop /> : <HomeMobile />}
+          </Grid>
           <Grid item lg={3} xl={3} />
           <Grid item lg={6} xl={6} sm={12} xs={12}>
             <Typography
