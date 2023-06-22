@@ -1,10 +1,9 @@
-import { createTheme, colors } from "@mui/material";
-import shadows from "./shadows";
+import { colors } from "@mui/material";
 import typography from "./typography";
 
 const white = "#FFFFFF";
 
-const theme = createTheme({
+const theme = {
   palette: {
     background: {
       dark: "#F4F6F8",
@@ -34,8 +33,7 @@ const theme = createTheme({
     icon: colors.blueGrey[600],
     divider: colors.grey[200],
   },
-  shadows,
   typography,
-});
+};
 
 export default theme;
