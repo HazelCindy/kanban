@@ -54,7 +54,10 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // console.log({ req: ctx.ctx.req });
   const { req } = ctx.ctx;
-  const deviceType = parser(req.headers["user-agent"]).device.type || "desktop";
+  const userAgent = req?.headers?.["user-agent"] || null;
+  const deviceType = userAgent
+    ? parser(userAgent).device.type || "desktop"
+    : "desktop";
 
   return {
     pageProps: {
