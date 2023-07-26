@@ -1,4 +1,8 @@
 ## Getting Started
+# Server
+git clone https://github.com/HazelCindy/apollo and run the server 
+
+# Client
 First, install the dependencies using yarn
 ```bash
 yarn
