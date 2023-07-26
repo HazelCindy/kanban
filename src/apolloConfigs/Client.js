@@ -4,7 +4,7 @@ import { onError } from "@apollo/client/link/error";
 import ApolloCache from "./Cache";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5001/graphql",
+  uri: "http://localhost:5000/graphql",
   credentials: "same-origin",
 });
 
