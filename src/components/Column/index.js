@@ -24,14 +24,11 @@ import { UPDATE_TASKS } from "../../api/graphMutations/UpdateTask";
 import { GET_TASKS } from "../../api/graphQueries/GetTasks";
 import { GET_COLUMNS } from "../../api/graphQueries/GetColumns";
 
-function Columns({ id = "", title, tasks }) {
-  const [columnUpdate, setColumnUpdate] = React.useState({
-    rename: {
-      edit: false,
-      name: "",
-    },
-    clear: false,
-    delete: false,
+function Columns({ id = "", title }) {
+  const [cardName, setCardName] = React.useState(title);
+  const [renameColumn, setRenameColumn] = React.useState({
+    rename: false,
+    id: "",
   });
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -70,18 +67,15 @@ function Columns({ id = "", title, tasks }) {
     setAnchorEl(null);
   };
   // handle the renaming of a column
-  const handleRename = () => {
-    setColumnUpdate({
-      ...columnUpdate,
-      rename: {
-        edit: true,
-        name: "",
-      },
+  const handleRename = (id) => {
+    setRenameColumn({
+      id,
+      rename: true,
     });
   };
 
   // handling deleting a column
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     deleteColumn({
       variables: { deleteColumnId: id },
       // refetch the columns
@@ -90,11 +84,11 @@ function Columns({ id = "", title, tasks }) {
     setAnchorEl(null);
   };
   // handle clearing the tasks in a column
-  const handleClear = () => {
+  const handleClear = (colId) => {
+    console.log(colId);
     clearTasks({
-      variables: { columnId: id },
-      // refetch the tasks
-      refetchQueries: [GET_TASKS, "getTasks"],
+      variables: { columnId: colId },
+      refetchQueries: [{ query: GET_TASKS, variables: { columnId: id } }],
     });
     setAnchorEl(null);
   };
@@ -106,12 +100,12 @@ function Columns({ id = "", title, tasks }) {
           display: "flex",
           justifyContent: "space-between",
           width: "95%",
-          height: columnUpdate.rename.edit ? "100px" : "60px",
+          height: renameColumn.rename ? "100px" : "60px",
           alignItems: "center",
           mx: "10px",
         }}
       >
-        {columnUpdate.rename.edit ? (
+        {renameColumn.rename ? (
           <Box
             sx={{
               display: "block",
@@ -119,10 +113,10 @@ function Columns({ id = "", title, tasks }) {
           >
             <TextField
               variant="outlined"
-              value={title}
+              value={cardName}
               size="small"
               onChange={(e) => {
-                columnUpdate["rename"].name = e.target.value;
+                setCardName(e.target.value);
               }}
             />
             <Box
@@ -130,16 +124,14 @@ function Columns({ id = "", title, tasks }) {
                 display: "flex",
                 justifyContent: "space-between",
                 width: "100%",
+                mt: "10px",
               }}
             >
               <Button
                 onClick={() =>
-                  setColumnUpdate({
-                    ...columnUpdate,
-                    rename: {
-                      edit: false,
-                      name: "",
-                    },
+                  setRenameColumn({
+                    ...renameColumn,
+                    rename: false,
                   })
                 }
               >
@@ -154,11 +146,15 @@ function Columns({ id = "", title, tasks }) {
                 onClick={() => {
                   updateColumn({
                     variables: {
-                      updateColumnId: id,
-                      title: columnUpdate["rename"].name,
+                      updateColumnId: renameColumn.id,
+                      title: cardName,
                     },
-                    // refetch the tasks
+                    // refetch the columns
                     refetchQueries: [GET_COLUMNS, "Columns"],
+                  });
+                  setRenameColumn({
+                    id: "",
+                    rename: false,
                   });
                 }}
               >
@@ -189,9 +185,9 @@ function Columns({ id = "", title, tasks }) {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={handleRename}>Rename</MenuItem>
-          <MenuItem onClick={handleClear}>Clear</MenuItem>
-          <MenuItem onClick={handleDelete}>Delete</MenuItem>
+          <MenuItem onClick={() => handleRename(id)}>Rename</MenuItem>
+          <MenuItem onClick={() => handleClear(id)}>Clear</MenuItem>
+          <MenuItem onClick={() => handleDelete(id)}>Delete</MenuItem>
         </Menu>
       </Box>
       <GetTasksQuery variables={{ columnId: id }} loader={<ListShimmers />}>
