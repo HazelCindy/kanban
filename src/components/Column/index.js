@@ -193,7 +193,7 @@ function Columns({ id = "", title }) {
       <GetTasksQuery variables={{ columnId: id }} loader={<ListShimmers />}>
         {({ getTasks }) =>
           getTasks?.length === 0 ? (
-            <Task description="" />
+            <Typography height="60px" />
           ) : (
             getTasks?.map((task, index) => (
               <Task
