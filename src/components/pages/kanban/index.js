@@ -6,10 +6,9 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import GetColumnsQuery from "../../../api/graphQueries/GetColumns";
 import BreadCrumb from "../../BreadCrumb";
-import ListShimmers from "../../../components/shimmers/ListShimmers";
+import ListShimmers from "../../shimmers/ListShimmers";
 import Cards from "../../Card";
 import Columns from "../../Column";
-import GetTasksQuery from "../../../api/graphQueries/GetTasks";
 
 function Kanban() {
   return (

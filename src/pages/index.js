@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import MainLayout from "../layouts/MainLayout";
 import Kanban from "../components/pages/kanban";
 

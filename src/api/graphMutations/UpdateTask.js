@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const UPDATE_TASKS = gql`
+const UPDATE_TASKS = gql`
   mutation updateTask(
     $updateTaskId: ID!
     $description: String
@@ -17,3 +17,4 @@ export const UPDATE_TASKS = gql`
     }
   }
 `;
+export default UPDATE_TASKS;
