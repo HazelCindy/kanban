@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const ADD_TASK = gql`
+const ADD_TASK = gql`
   mutation Mutation($columnId: String!, $description: String) {
     addTask(columnId: $columnId, description: $description) {
       columnId
@@ -9,3 +9,4 @@ export const ADD_TASK = gql`
     }
   }
 `;
+export default ADD_TASK;
