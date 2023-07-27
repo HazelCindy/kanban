@@ -5,8 +5,8 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { useMutation } from "@apollo/client";
-import { ADD_COLUMN } from "../../api/graphMutations/AddColumn";
-import { ADD_TASK } from "../../api/graphMutations/AddTask";
+import ADD_COLUMN from "../../api/graphMutations/AddColumn";
+import ADD_TASK from "../../api/graphMutations/AddTask";
 import { GET_TASKS } from "../../api/graphQueries/GetTasks";
 import { GET_COLUMNS } from "../../api/graphQueries/GetColumns";
 

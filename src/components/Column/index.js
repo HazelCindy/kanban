@@ -15,13 +15,12 @@ import {
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Cards from "../Card";
 import Task from "../Task";
-import GetTasksQuery from "../../api/graphQueries/GetTasks";
+import GetTasksQuery, { GET_TASKS } from "../../api/graphQueries/GetTasks";
 import ListShimmers from "../shimmers/ListShimmers";
-import { DELETE_COLUMN } from "../../api/graphMutations/DeleteColumn";
-import { CLEAR_TASKS } from "../../api/graphMutations/ClearTasks";
-import { UPDATE_COLUMNS } from "../../api/graphMutations/RenameColumn";
-import { UPDATE_TASKS } from "../../api/graphMutations/UpdateTask";
-import { GET_TASKS } from "../../api/graphQueries/GetTasks";
+import DELETE_COLUMN from "../../api/graphMutations/DeleteColumn";
+import CLEAR_TASKS from "../../api/graphMutations/ClearTasks";
+import UPDATE_COLUMNS from "../../api/graphMutations/RenameColumn";
+import UPDATE_TASKS from "../../api/graphMutations/UpdateTask";
 import { GET_COLUMNS } from "../../api/graphQueries/GetColumns";
 
 function Columns({ id = "", title }) {
@@ -67,17 +66,17 @@ function Columns({ id = "", title }) {
     setAnchorEl(null);
   };
   // handle the renaming of a column
-  const handleRename = (id) => {
+  const handleRename = (colId) => {
     setRenameColumn({
-      id,
+      id: colId,
       rename: true,
     });
   };
 
   // handling deleting a column
-  const handleDelete = (id) => {
+  const handleDelete = (colId) => {
     deleteColumn({
-      variables: { deleteColumnId: id },
+      variables: { deleteColumnId: colId },
       // refetch the columns
       refetchQueries: [GET_COLUMNS, "getColumns"],
     });
