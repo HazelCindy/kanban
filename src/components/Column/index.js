@@ -84,7 +84,6 @@ function Columns({ id = "", title }) {
   };
   // handle clearing the tasks in a column
   const handleClear = (colId) => {
-    console.log(colId);
     clearTasks({
       variables: { columnId: colId },
       refetchQueries: [{ query: GET_TASKS, variables: { columnId: id } }],
